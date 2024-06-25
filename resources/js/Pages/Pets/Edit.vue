@@ -10,6 +10,7 @@ import VaccinationsForm from '@/Pages/Pets/Partials/VaccinationsForm.vue'
 import MedicationsForm from '@/Pages/Pets/Partials/MedicationsForm.vue'
 import MedicalHistoriesForm from '@/Pages/Pets/Partials/MedicalHistoriesForm.vue'
 import SurgicalHistoriesForm from '@/Pages/Pets/Partials/SurgicalHistoriesForm.vue'
+import GroomingForm from '@/Pages/Pets/Partials/GroomingForm.vue'
 import Gallery from '@/Pages/Pets/Partials/Gallery.vue'
 import OwnerDetails from '@/Pages/Pets/Partials/OwnerDetails.vue'
 import { validateForm, errors, watchFields } from '@/Validation/Pets/Index'
@@ -23,7 +24,7 @@ const matchingSpecies = ref([])
 const matchingBreeds = ref([])
 const loadingBreeds = ref(false)
 const selectedFile = ref(null)
-const tabs = ref(['Vaccinations', 'Medical History', 'Medications', 'Surgical History', 'Gallery'])
+const tabs = ref(['Vaccinations', 'Medical History', 'Medications', 'Surgical History', 'Gallery', 'Grooming'])
 const toast = useToast()
 const newImage = ref(null)
 
@@ -375,6 +376,9 @@ onMounted(async () => {
 					</TabPanel>
 					<TabPanel class="mt-2">
 						<Gallery :pet="pet" />
+					</TabPanel>
+					<TabPanel class="mt-2">
+						<GroomingForm :pet="pet" />
 					</TabPanel>
 				</TabPanels>
 			</TabGroup>

@@ -13,6 +13,7 @@ use App\Http\Controllers\VaccinationController;
 use App\Http\Controllers\MedicalHistoryController;
 use App\Http\Controllers\MedicationController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\GroomingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +86,12 @@ Route::middleware([
     Route::get('/pets/{pet}/surgeries', [SurgicalHistoryController::class, 'fetchSurgeries'])->name('pets.surgeries.fetch');
     Route::post('/pets/{pet}/surgeries', [SurgicalHistoryController::class, 'storeSurgery'])->name('pets.surgeries.store');
     Route::delete('/pets/{pet}/surgeries/{surgery}', [SurgicalHistoryController::class, 'destroySurgery'])->name('pets.surgeries.delete');
+
+    // Grooming sessions
+    Route::get('/pets/{pet}/grooming', [GroomingController::class, 'fetchGroomingSessions'])->name('pets.grooming.fetch');
+    Route::post('/pets/{pet}/grooming', [GroomingController::class, 'storeGroomingSession'])->name('pets.grooming.store');
+    Route::delete('/pets/{pet}/grooming/{groomingSession}', [GroomingController::class, 'destroyGroomingSession'])->name('pets.grooming.delete');
+
 
     // Gallery
     Route::get('/pets/{pet}/gallery', [GalleryController::class, 'fetchAllImages'])->name('pets.gallery.fetch');

@@ -76,4 +76,9 @@ class Pet extends Model
 	{
 		return $this->hasMany(Image::class);
 	}
+
+	public function groomingSessions()
+	{
+		return $this->hasMany(GroomingSession::class);
+	}
 }
