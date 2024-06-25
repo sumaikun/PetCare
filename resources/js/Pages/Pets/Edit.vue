@@ -11,6 +11,7 @@ import MedicationsForm from '@/Pages/Pets/Partials/MedicationsForm.vue'
 import MedicalHistoriesForm from '@/Pages/Pets/Partials/MedicalHistoriesForm.vue'
 import SurgicalHistoriesForm from '@/Pages/Pets/Partials/SurgicalHistoriesForm.vue'
 import Gallery from '@/Pages/Pets/Partials/Gallery.vue'
+import OwnerDetails from '@/Pages/Pets/Partials/OwnerDetails.vue'
 import { validateForm, errors, watchFields } from '@/Validation/Pets/Index'
 
 const isSubmitting = ref(false)
@@ -379,6 +380,12 @@ onMounted(async () => {
 			</TabGroup>
 		</div>
 
+		<div class="col-span-12 lg:col-span-3 mt-4">
+			<h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Owner</h3>
+			<a :href="`/clients/${pet.client.slug}/edit`" class="block">
+				<OwnerDetails :client="pet.client" />
+			</a>
+		</div>
 
 	</AppLayout>
 </template>

@@ -3,6 +3,7 @@ import AppLayout from '@/Layouts/AppLayout.vue'
 import { defineProps } from 'vue'
 import { EnvelopeIcon, MapPinIcon, PhoneIcon, UserIcon } from '@heroicons/vue/24/outline'
 import { Link } from '@inertiajs/vue3';
+import PetsTable from '@/Pages/Clients/Partials/PetsTable.vue'
 
 const props = defineProps({
   client: {
@@ -10,6 +11,8 @@ const props = defineProps({
     required: true
   }
 })
+
+console.log(props)
 </script>
 
 <template>
@@ -59,19 +62,10 @@ const props = defineProps({
       </div>
       <div class="col-span-12 lg:col-span-9 bg-gray-100 p-2 rounded-xl">
         <ul class="max-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <Link :href="route('pets.show', { slug: pet.slug })" v-for="pet in client.pets" :key="pet.id">
-            <li class="pb-3 sm:pb-4 pt-4 hover:bg-white hover:rounded-xl">
-            <div class="flex items-center space-x-4 rtl:space-x-reverse">
-              <div class="flex-1 min-w-0 p-4">
-                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                  {{ pet.name }}
-                </p>
-                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                  {{ pet.species.name }} / {{ pet.breed.name }}
-                </p>
-              </div>
-            </div>
-          </li></Link>
+          <div class="col-span-12 lg:col-span-9 mt-4">
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Pets</h3>
+            <PetsTable :pets="client.pets" />
+          </div>
         </ul>
       </div>
     </div>

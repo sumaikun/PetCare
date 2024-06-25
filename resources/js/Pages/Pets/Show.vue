@@ -13,6 +13,7 @@ import MedicalHistoryTable from '@/Pages/Pets/Partials/Tables/MedicalHistory.vue
 import MedicationsTable from '@/Pages/Pets/Partials/Tables/Medications.vue'
 import SurgicalHistoryTable from '@/Pages/Pets/Partials/Tables/SurgicalHistory.vue'
 import GalleryTable from '@/Pages/Pets/Partials/Tables/Gallery.vue'
+import OwnerDetails from '@/Pages/Pets/Partials/OwnerDetails.vue'
 
 const { pet } = usePage().props
 const tabs = ref(['Vaccinations', 'Medical History', 'Medications', 'Surgical History', 'Gallery'])
@@ -159,6 +160,13 @@ const deletePet = (id) => {
 						</TabPanel>
 					</TabPanels>
 				</TabGroup>
+				<div class="col-span-12 lg:col-span-3 mt-4">
+					<h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Owner</h3>
+					<a :href="`/clients/${pet.client.slug}/edit`" class="block">
+						<OwnerDetails :client="pet.client" />
+					</a>
+				</div>
+			</div>
 		</div>
-	</div>
-</AppLayout></template>
+	</AppLayout>
+</template>

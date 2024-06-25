@@ -4,6 +4,7 @@ import { ref, defineProps, onMounted } from 'vue'
 import { usePage } from "@inertiajs/vue3"
 import { useToast } from "vue-toastification"
 import { validateForm, watchFields, errors } from '@/Validation/Clients/Index';
+import PetsTable from '@/Pages/Clients/Partials/PetsTable.vue'
 import Spinner from '@/Components/Spinner.vue'
 
 const toast = useToast();
@@ -180,6 +181,10 @@ onMounted(() => {
           </button>
           
         </form>
+      </div>
+      <div class="col-span-12 lg:col-span-9 mt-4">
+        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Pets</h3>
+        <PetsTable :pets="client.pets" />
       </div>
     </section>
   </AppLayout>
