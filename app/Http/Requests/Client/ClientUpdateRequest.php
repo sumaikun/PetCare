@@ -25,10 +25,11 @@ class ClientUpdateRequest extends FormRequest
         return [
 			'name' => ['required', 'string', 'max:255'],
 			'email' => 'required|email|unique:users,email,' . $this->route('id'),
-			'phone_number' => ['nullable', 'integer'],
+			'phone_number' => ['required', 'string', 'max:25'],
 			'address' => ['nullable', 'string'],
 			'password' => 'nullable|string|min:8',
 			'notes' => ['nullable', 'string', 'max:60000'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:1024']
 		];
     }
 }

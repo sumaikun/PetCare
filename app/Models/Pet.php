@@ -52,28 +52,28 @@ class Pet extends Model
 		return $this->BelongsTo(Breed::class);
 	}
 
-		public function vaccinations(): HasMany
-		{
-			return $this->hasMany(Vaccination::class);
-		}
+	public function vaccinations(): HasMany
+	{
+		return $this->hasMany(Vaccination::class);
+	}
 
-		public function medicalHistory(): HasMany
-		{
-			return $this->hasMany(MedicalHistory::class);
-		}
+	public function medicalHistory(): HasMany
+	{
+		return $this->hasMany(MedicalHistory::class);
+	}
 
-		public function medications(): HasMany
-		{
-			return $this->hasMany(Medication::class);
-		}
+	public function medications(): HasMany
+	{
+		return $this->hasMany(Medication::class);
+	}
 
-		public function surgicalHistory(): HasMany
-		{
-			return $this->hasMany(SurgicalHistory::class);
-		}
+	public function surgicalHistory(): HasMany
+	{
+		return $this->hasMany(SurgicalHistory::class);
+	}
 
-		public function images()
-		{
-			return $this->hasMany(Image::class);
-		}
+	public function images()
+	{
+		return $this->hasMany(Image::class);
+	}
 }

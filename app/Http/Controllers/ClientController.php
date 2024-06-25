@@ -33,18 +33,28 @@ class ClientController extends Controller
     public function show($slug): \Inertia\Response
     {
         $client = $this->clientService->findClientBySlug($slug);
+
+        if ($client->photo) {
+			$client->photo = url('/') . '/' . $client->photo;
+		}
+
         return Inertia::render('Clients/Show', ['client' => $client]);
     }
 
     public function edit($slug): \Inertia\Response
     {
         $client = $this->clientService->findClientBySlug($slug);
+
+        if ($client->photo) {
+			$client->photo = url('/') . '/' . $client->photo;
+		}
+
         return Inertia::render('Clients/Edit', ['client' => $client]);
     }
 
     public function store(ClientStoreRequest $request): JsonResponse
     {
-        $user = $this->clientService->storeClient($request->validated());
+        $user = $this->clientService->createClient($request->validated());
         return response()->json(['message' => 'Client successfully added!'], 201);
     }
 

@@ -39,7 +39,6 @@ class PetController extends Controller
 			$pet->photo = url('/') . '/' . $pet->photo;
 		}
 
-		// Return the pet as a JSON response
 		return Inertia::render('Pets/Show', [
 			'pet' => $pet
 		]);

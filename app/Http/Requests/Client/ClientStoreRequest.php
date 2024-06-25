@@ -25,9 +25,10 @@ class ClientStoreRequest extends FormRequest
         return [
 			'name' => ['required', 'string', 'max:255'],
 			'email' => ['required', 'email', 'max:255'],
-			'phone_number' => ['required', 'integer'],
+			'phone_number' => ['required', 'string', 'max:25'],
 			'address' => ['nullable', 'string'],
-			'notes' => ['nullable', 'string']
+			'notes' => ['nullable', 'string'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:1024']
 		];
     }
 }

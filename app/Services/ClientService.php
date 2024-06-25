@@ -6,15 +6,27 @@ use App\Models\Client;
 
 class ClientService
 {
-  public function storeClient($data)
+
+  public function createClient(array $data): Client
   {
-    return Client::create($data);
+    $client = Client::create($data);
+
+    if (array_key_exists('photo', $data) && $data['photo']->isValid()) {
+        $this->handlePhotoUpload($client, $data['photo']);
+    }
+
+    return $client;
   }
 
   public function updateClient($data, $id)
   {
     $client = Client::findOrFail($id);
     $client->update($data);
+
+    if (array_key_exists('photo', $data) && $data['photo']->isValid()) {
+      $this->handlePhotoUpload($client, $data['photo']);
+    }
+
     return $client;
   }
 
@@ -28,6 +40,24 @@ class ClientService
   {
     Client::destroy($ids);
   }
+
+  protected function handlePhotoUpload(Client $client, $photo): void
+  {
+      $clientId = $client->id;
+      $filename = uniqid() . '.' . $photo->getClientOriginalExtension();
+      $directory = public_path('storage/images/clients/' . $clientId);
+
+      if (!file_exists($directory)) {
+          mkdir($directory, 0777, true);
+      }
+
+      $photo->move($directory, $filename);
+      $photoPath = 'storage/images/clients/' . $clientId . '/' . $filename;
+
+      $client->photo = $photoPath;
+      $client->save();
+  }
+
 
   public function fetchAllClients($page)
   {

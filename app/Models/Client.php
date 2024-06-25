@@ -19,6 +19,7 @@ class Client extends Model
         'phone_number',
         'address',
         'notes',
+        'photo'
     ];
 
     protected function performInsert(Builder $query)

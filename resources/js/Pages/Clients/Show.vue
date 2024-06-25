@@ -24,7 +24,7 @@ const props = defineProps({
       <div class="col-span-12 lg:col-span-3">
         <div class="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
           <img class="object-cover object-center w-full h-56"
-            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+            :src="client.photo || '/storage/images/clients/no_photo.png'"
             alt="avatar">
 
           <div class="flex items-center px-6 py-3 bg-gray-900">
